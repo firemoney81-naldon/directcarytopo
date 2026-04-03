@@ -1,23 +1,419 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "기아 EV 유지비 모델별 비교: 2026년 전기차 시대, 숨겨진 비용과 절약 방법",
+      "url": "https://www.example.com", 
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.example.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "기아 EV 모델별로 유지비에 차이가 나는 주된 이유는 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "모델별 유지비 차이는 주로 차량의 크기, 배터리 용량, 전비(연비에 해당하는 전기차 효율)에 따라 발생합니다. 예를 들어 EV9처럼 크고 무거운 차량은 EV6나 Niro EV 대비 더 많은 전력을 소비하고, 타이어 마모도 빠르며, 보험료가 높게 책정될 수 있습니다. 또한, 배터리 크기에 따른 충전 횟수와 급속 충전 속도 차이도 유지비에 영향을 줍니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "전기차 유지비에서 가장 큰 비중을 차지하는 항목은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "전기차는 내연기관차와 달리 연료비(휘발유/경유) 대신 충전 요금이 주된 유지비 항목입니다. 특히 공용 급속 충전을 자주 이용하는 경우 충전 비용이 예상보다 높을 수 있습니다. 또한, 차량가액이 높아 상대적으로 보험료가 비싸고, 소모품 중에서는 고성능 타이어의 교체 비용이 큰 비중을 차지합니다. 장기적으로는 배터리 성능 저하에 대한 대비가 필요합니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "전기차 보험료를 절약할 수 있는 효과적인 방법은 무엇인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "전기차 보험료 절약을 위해서는 다이렉트 보험을 통해 여러 보험사의 견적을 비교하는 것이 필수적입니다. 또한, '주행거리 특약(마일리지 특약)', '블랙박스 할인 특약', '안전운전 습관 특약(티맵/카카오내비 연동)' 등을 활용하여 보험료를 할인받을 수 있습니다. 특히 전기차는 자차 손해율이 높아 보험료가 비싸므로, 이러한 할인 특약을 적극적으로 활용하는 것이 중요합니다."
+            }
+          }
+        ]
+      }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #0046A0; /* 기아 브랜드 컬러 (깊은 파랑) */
+            --secondary-color: #5E9CD4; /* 부드러운 파란색 */
+            --accent-color: #FF7F00; /* 주황색 (CTA/강조) */
+            --text-color: #2c3e50; /* 진한 회색 */
+            --bg-light: #F8F9FB; /* 매우 밝은 배경 */
+            --bg-card: #FFFFFF; /* 카드 배경 흰색 */
+            --btn-cta: #FF7F00; /* 따뜻한 주황 (Call to Action) */
+            --border-light: #E0E0E0;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+        
+        body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; background-color: var(--bg-light); color: var(--text-color); line-height: 1.7; font-weight: 400; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+        
+        /* Header */
+        header { background-color: var(--bg-card); padding: 15px 0; border-bottom: 1px solid var(--border-light); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        header h1 { margin: 0; font-size: 1.8em; color: var(--primary-color); font-weight: 700; text-align: center; }
+        header h1 a { text-decoration: none; color: inherit; }
+
+        /* Hero Section */
+        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, #0066c0 100%); color: #fff; text-align: center; padding: 100px 20px 60px; }
+        .hero h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 900; line-height: 1.2; }
+        .hero p { font-size: 1.4em; margin-bottom: 40px; font-weight: 300; }
+        
+        /* CTA Button */
+        .cta-btn { background-color: var(--btn-cta); color: #fff; padding: 20px 50px; font-size: 1.4em; font-weight: 700; border: none; border-radius: 60px; cursor: pointer; transition: background-color 0.3s, transform 0.2s; box-shadow: 0 6px 15px rgba(0,0,0,0.2); text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 1px; }
+        .cta-btn:hover { background-color: #e66f00; transform: translateY(-4px); }
+
+        /* Comparison Form Box */
+        .compare-form-box { background-color: var(--bg-card); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin: -40px auto 40px; max-width: 900px; border: 2px solid var(--secondary-color); }
+        .compare-form-box h2 { color: var(--primary-color); text-align: center; margin-bottom: 30px; font-size: 2.2em; font-weight: 700; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .compare-form-box label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-color); font-size: 0.95em; }
+        .compare-form-box input[type="text"], 
+        .compare-form-box input[type="tel"],
+        .compare-form-box input[type="date"],
+        .compare-form-box input[type="number"],
+        .compare-form-box select { 
+            width: 100%; padding: 14px; border: 1px solid var(--border-light); border-radius: 8px; box-sizing: border-box; 
+            font-size: 1em; transition: border-color 0.3s; background-color: #fcfcfc;
+        }
+        .compare-form-box input:focus, .compare-form-box select:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 5px rgba(0, 70, 160, 0.3); }
+        .form-full { grid-column: 1 / -1; text-align: center; margin-top: 20px; }
+        
+        /* Content Sections */
+        .content-section { background-color: var(--bg-card); padding: 50px 0; margin: 30px auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .content-section h2 { font-size: 2.5em; color: var(--primary-color); border-bottom: 3px solid var(--accent-color); padding-bottom: 15px; margin-bottom: 40px; text-align: center; font-weight: 900; letter-spacing: -1px; }
+        .content-section h3 { font-size: 1.8em; color: var(--secondary-color); margin-top: 35px; margin-bottom: 15px; font-weight: 700; border-left: 5px solid var(--accent-color); padding-left: 15px; }
+        .content-section h4 { font-size: 1.3em; color: var(--text-color); margin-top: 20px; margin-bottom: 10px; font-weight: 500; }
+        .content-section ul, .content-section ol { padding-left: 20px; }
+        .content-section li { margin-bottom: 10px; }
+        
+        /* Feature Grid (Ranking/Criteria) */
+        .feature-grid { display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center; margin-top: 40px; }
+        .feature-grid .item { width: calc(25% - 20px); margin: 10px; padding: 25px; background-color: var(--bg-light); border-radius: 10px; transition: transform 0.3s, box-shadow 0.3s; border: 1px solid var(--border-light); }
+        .feature-grid .item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .feature-grid .item .rank { font-size: 3em; font-weight: 900; color: var(--primary-color); margin-bottom: 10px; }
+        .feature-grid .item h4 { font-size: 1.2em; color: var(--text-color); margin-top: 0; font-weight: 700; }
+
+        /* Table/Graph Styles */
+        .data-table, .data-graph { margin: 30px auto; width: 100%; border-collapse: collapse; text-align: left; }
+        .data-table th, .data-table td { padding: 15px; border: 1px solid var(--border-light); }
+        .data-table th { background-color: var(--primary-color); color: #fff; font-weight: 700; text-align: center; }
+        .data-table td { text-align: center; }
+        .data-table tr:nth-child(even) { background-color: var(--bg-light); }
+        .data-table tr:hover { background-color: #f1f1f1; }
+
+        /* FAQ Section */
+        .faq-item { border-bottom: 1px solid var(--border-light); padding: 15px 0; }
+        .faq-item h3 { cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-size: 1.2em; color: var(--text-color); font-weight: 500; transition: color 0.3s; }
+        .faq-item h3:hover { color: var(--secondary-color); }
+        .faq-item h3::after { content: '▼'; font-size: 0.8em; color: var(--accent-color); transition: transform 0.3s; }
+        .faq-item.active h3::after { transform: rotate(180deg); }
+        .faq-item p { display: none; padding: 15px 0; color: #555; background-color: #fcfcfc; border-left: 3px solid var(--accent-color); padding-left: 20px; margin-top: 10px; }
+        .faq-item.active p { display: block; }
+        
+        /* Keyword List */
+        .keyword-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; margin-top: 30px; gap: 10px; }
+        .keyword-list li { background-color: var(--secondary-color); color: #fff; padding: 8px 18px; border-radius: 25px; font-weight: 400; font-size: 0.9em; transition: background-color 0.3s; }
+        .keyword-list li:hover { background-color: var(--primary-color); cursor: default; }
+
+        /* External Links/Authority */
+        .authority-links { margin-top: 40px; text-align: center; }
+        .authority-links a { display: inline-block; background-color: var(--accent-color); color: #fff; padding: 10px 20px; border-radius: 5px; margin: 5px; text-decoration: none; font-weight: 500; transition: background-color 0.3s; }
+        .authority-links a:hover { background-color: #e66f00; }
+        
+        /* Footer */
+        footer { background-color: var(--primary-color); color: #EFEFEF; text-align: center; padding: 40px 20px; font-size: 0.9em; margin-top: 30px; }
+        footer a { color: #fff; text-decoration: none; margin: 0 10px; transition: text-decoration 0.3s; }
+        footer a:hover { text-decoration: underline; }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 900px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .feature-grid .item { width: calc(50% - 20px); }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.5em; }
+            .hero p { font-size: 1.2em; }
+            .cta-btn { padding: 18px 30px; font-size: 1.2em; }
+            .content-section h2 { font-size: 2em; }
+            .feature-grid .item { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1><a href="/">기아 EV 유지비 모델별 비교: 2026년 전기차 시대, 숨겨진 비용과 절약 방법</a></h1>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <h1>기아 **EV 유지비** 2026년 **모델별 비교**<br>전기차 유지비 **예상** 견적 분석</h1>
+            <p>전기차 구매 전 가장 궁금한 점, 과연 내연기관차보다 **유지비**가 저렴할까? **기아 EV6, EV9, Niro EV, Ray EV** 등 인기 모델의 실질적인 **비용**과 숨겨진 **단점**을 상세히 비교 분석합니다.</p>
+            <a href="#compare-form" class="cta-btn">내 차 유지비 견적 요청하기</a>
+        </div>
+    </section>
+
+    <section id="compare-form" class="compare-form-box container">
+        <h2>**기아 EV 유지비** 간편 견적 요청: **할인** 및 **혜택** 확인</h2>
+        <p style="text-align: center; font-size: 1.1em; color: var(--text-color); font-weight: 400;">간단한 정보 입력으로 **기아 EV 모델별** 예상 **유지비**와 **보험료**를 실시간으로 비교해 드립니다.</p>
+        <form action="#" method="post">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">이름 (필수)</label>
+                    <input type="text" id="name" placeholder="실명을 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">연락처 (필수)</label>
+                    <input type="tel" id="phone" placeholder="휴대폰 번호를 입력하세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="car-model">관심 모델 선택</label>
+                    <select id="car-model" required>
+                        <option value="">-- 모델을 선택하세요 --</option>
+                        <option value="EV6">기아 EV6</option>
+                        <option value="EV9">기아 EV9</option>
+                        <option value="Niro EV">기아 니로 EV</option>
+                        <option value="Ray EV">기아 레이 EV</option>
+                        <option value="EV3">기아 EV3</option>
+                        <option value="EV4">기아 EV4</option>
+                        <option value="EV5">기아 EV5</option>
+                        <option value="기타">기타 모델</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="annual-mileage">연간 예상 주행거리 (km)</label>
+                    <input type="number" id="annual-mileage" placeholder="예: 15000" required>
+                </div>
+                <div class="form-group">
+                    <label for="charging-type">주요 충전 방식</label>
+                    <select id="charging-type" required>
+                        <option value="home">집밥 (완속 충전)</option>
+                        <option value="public_rapid">공용 급속 충전</option>
+                        <option value="mix">혼합 (집/공용 병행)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="purchase-type">구매 계획</label>
+                    <select id="purchase-type" required>
+                        <option value="new">신규 구매</option>
+                        <option value="used">중고 구매</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="battery-health">현재 배터리 상태 (중고차인 경우)</label>
+                    <input type="number" id="battery-health" placeholder="예: 95 (%)" min="0" max="100">
+                </div>
+                <div class="form-group">
+                    <label for="insurance-info">보험 가입 여부</label>
+                    <select id="insurance-info" required>
+                        <option value="existing">기존 보험 유지</option>
+                        <option value="new">신규 가입 예정</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-full">
+                <button type="submit" class="cta-btn">유지비 견적 요청 및 **할인 혜택** 확인</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <h2>기아 EV **유지비**의 진실: **장점**과 숨겨진 **단점** 심층 분석</h2>
+            <p>
+                전기차는 내연기관차 대비 **유지비**가 저렴하다는 인식이 일반적입니다. 하지만 이는 연료비 절약이라는 명확한 **장점**에 기인하며, **단점**으로 지목되는 **보험료**, **타이어 교체 비용**, **배터리 수명** 등의 숨겨진 **비용**도 고려해야 합니다. 특히 **기아 EV6, EV9, Niro EV**와 같이 다양한 세그먼트의 EV 모델들이 출시되면서, 차량의 크기와 배터리 성능에 따라 **유지비**가 크게 달라지는 **차이점**이 발생합니다.
+                <br><br>
+                2026년 전기차 시장은 고성능 모델의 등장과 함께 충전 인프라의 확충, 보험료 산정 방식의 변화 등 여러 변수를 겪고 있습니다. 운전자들은 단순히 *전기차 유지비*가 저렴할 것이라는 막연한 기대를 넘어, 각 모델의 특징을 파악하고 자신에게 맞는 **가장 저렴한곳**의 **견적**을 비교해보는 현명한 자세가 필요합니다. 본 문서는 **기아 EV 모델별**로 실질적인 **유지비** **예상** **금액**을 분석하여, **내돈내산** 오너들의 **후기**를 바탕으로 현실적인 정보를 제공합니다.
+            </p>
+
+            <h3>1. **모델별 비교:** 기아 EV 라인업의 **유지비** **차이점** 분석</h3>
+            <p>
+                기아는 소형 CUV인 **레이 EV**부터 준대형 SUV **EV9**까지 폭넓은 EV 라인업을 구축했습니다. 각 모델은 주행 환경과 목적에 따라 **유지비**가 상이하게 나타납니다. **EV 유지비**의 핵심은 **전비(전기차 연비)**와 **배터리 용량**인데, 이는 주행 가능 거리와 충전 **비용**에 직결됩니다.
+            </p>
+
+            <h4>1.1. **EV6 유지비** vs. **EV9 유지비** vs. **Niro EV 유지비**</h4>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>모델</th>
+                        <th>배터리 용량 (kWh)</th>
+                        <th>전비 (복합 km/kWh)</th>
+                        <th>연간 충전 비용 (1.5만 km 기준)</th>
+                        <th>보험료 (평균)</th>
+                        <th>주요 특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>**EV6 (롱 레인지)**</td>
+                        <td>77.4</td>
+                        <td>4.8~5.4</td>
+                        <td>약 80만원 ~ 120만원</td>
+                        <td>평균 대비 높음</td>
+                        <td>고성능 CUV, 타이어 마모 빠름.</td>
+                    </tr>
+                    <tr>
+                        <td>**EV9 (롱 레인지)**</td>
+                        <td>99.8</td>
+                        <td>3.9~4.2</td>
+                        <td>약 110만원 ~ 160만원</td>
+                        <td>평균 대비 매우 높음</td>
+                        <td>대형 SUV, 높은 전력 소비, 타이어 교체 주기 짧음.</td>
+                    </tr>
+                    <tr>
+                        <td>**Niro EV**</td>
+                        <td>64.8</td>
+                        <td>5.0~5.3</td>
+                        <td>약 70만원 ~ 110만원</td>
+                        <td>평균 수준</td>
+                        <td>가성비 CUV, 높은 전비 효율.</td>
+                    </tr>
+                    <tr>
+                        <td>**Ray EV**</td>
+                        <td>35.2</td>
+                        <td>4.2~4.9</td>
+                        <td>약 60만원 ~ 90만원</td>
+                        <td>평균 수준</td>
+                        <td>도심형 경차, 배터리 용량 적음, 짧은 주행거리.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="font-size: 0.9em; color: #777; margin-top: 10px;">*연간 충전 비용은 공용 완속 충전 요금(kWh당 300원)과 급속 충전 요금(kWh당 400원)을 혼합하여 산출한 **예상** **금액**입니다. 실제 **가격**은 충전 환경에 따라 달라질 수 있습니다.</p>
+
+            <h4>1.2. 2026년 신규 모델 **EV3** 및 **EV4**의 **유지비** 전망</h4>
+            <p>
+                2026년은 **기아 EV3**와 **EV4**가 시장에 본격적으로 출시되며 전기차 대중화의 분기점이 될 것으로 예상됩니다. 이 모델들은 **EV6**와 **EV9**의 고가 포지셔닝과는 달리, 합리적인 **가격**과 효율성에 초점을 맞춰 개발되었습니다. **EV3**와 **EV4**는 400V 기반의 시스템을 채택하여 배터리 용량을 최적화하고, 소모품 **비용**을 낮추는 방향으로 설계될 것입니다. 따라서 **유지비** 측면에서는 **Niro EV**보다 더 **저렴한곳**으로 평가될 가능성이 높으며, **예상** **유지비**는 내연기관 소형 SUV보다 확실히 낮을 것으로 기대됩니다.
+            </p>
+
+            <h3>2. **기아 EV 유지비**의 핵심 요소: 충전 **가격**과 **할인 혜택**</h3>
+            <p>
+                전기차 **유지비**의 대부분은 충전 **비용**입니다. 충전 **가격**은 '집밥(홈 충전기)', '아파트 공용 충전기', '고속도로 휴게소 급속 충전기' 등 충전 인프라의 종류에 따라 천차만별입니다. 특히 2026년에는 전기차 보급 확대로 인해 충전 요금이 꾸준히 인상될 것으로 **예상**되므로, 효율적인 충전 전략이 **유지비** 절감의 핵심입니다.
+            </p>
+            <ul>
+                <li><strong>집밥 (홈 충전) 활용:</strong> 심야 시간대 경부하 요금을 이용할 경우, kWh당 100~150원 내외로 충전이 가능합니다. 이는 **가장 싼곳**이며, 연간 **유지비**를 획기적으로 낮출 수 있는 방법입니다. **EV6**나 **EV9** 오너들의 **내돈내산** **후기**를 보면, 홈 충전기 설치가 필수라고 입을 모읍니다.</li>
+                <li><strong>공용 충전 인프라 활용:</strong> 급속 충전의 경우 kWh당 400~500원 수준으로, 내연기관차 연료비와 큰 **차이점**이 없을 수도 있습니다. 따라서 급속 충전은 장거리 운행 시에만 활용하고, 되도록 완속 충전을 이용해야 합니다.</li>
+                <li><strong>**충전 카드** 및 **멤버십 혜택**:</strong> 충전 **전문** **업체**에서 제공하는 멤버십에 **가입**하거나 신용카드 **할인**을 받으면 충전 **비용**을 절약할 수 있습니다.</li>
+            </ul>
+
+            <h3 id="component-analysis">3. 전기차 **유지비**의 숨겨진 **단점**: **보험료**와 **소모품 비용**</h3>
+            <p>
+                전기차는 엔진오일 교환이나 변속기 오일 교환이 필요 없다는 **장점**이 있지만, 다른 부분에서 **유지비**가 발생합니다. 특히 **EV6**나 **EV9** 같은 고가 모델은 **보험료**가 내연기관차 대비 높은 경향이 있습니다.
+            </p>
+            <ul>
+                <li><strong>높은 차량가액과 보험료:</strong> 전기차는 차량 **가격**이 비싸 자차 **보험료**가 높습니다. 또한, 사고 시 배터리 팩 손상 가능성 때문에 수리 **비용**이 많이 발생합니다. **자동차보험료비교사이트**를 통해 **견적**을 확인하고, **가장 저렴한곳**의 **추천**을 받는 것이 중요합니다.</li>
+                <li><strong>타이어 마모:</strong> 전기차는 순간 토크가 높고, 배터리 무게 때문에 공차중량이 무겁습니다. 이로 인해 타이어 마모 속도가 내연기관차 대비 빠릅니다. **EV6** 오너들은 **평균**적으로 3~4만 km 주행 후 타이어를 교체하는데, 고성능 타이어 **가격**이 비싸 **유지비** **단점**으로 작용합니다.</li>
+                <li><strong>정부 보조금 및 세제 **혜택**:</strong> 2026년 전기차 **유지비** **혜택**으로 세금 감면이 있지만, 매년 보조금 규모가 축소되는 추세입니다. **신규 가입** 시점에 맞춰 **지원금**을 확인해야 합니다.</li>
+            </ul>
+
+            <h3>4. **기아 EV 모델별** 배터리 관리: 장기 **유지비**의 핵심</h3>
+            <p>
+                전기차 구매자들이 **가장싼곳**을 찾을 때 간과하기 쉬운 부분이 바로 **배터리 수명**입니다. 배터리 성능 저하는 곧 주행 가능 거리 감소로 이어져 차량의 가치를 떨어뜨립니다. **기아 EV 모델별** 배터리 보증 기간은 8년/16만 km 이상이지만, 보증 기간 이후의 배터리 교체 **비용**은 수천만 원에 달할 수 있습니다.
+            </p>
+            <ul>
+                <li><strong>배터리 관리 습관:</strong> 배터리 수명을 연장하려면 100% 충전 상태로 장시간 방치하거나, 20% 미만의 저전력 상태로 운행하는 것을 피해야 합니다. 급속 충전을 자주 이용하는 것도 배터리 건강에 부정적인 영향을 미칠 수 있습니다.</li>
+                <li><strong>배터리 성능 점검:</strong> **전문** **업체**를 통해 정기적으로 배터리 상태를 점검하고, 필요 시 밸런싱 작업을 하는 것이 좋습니다. **기아** 서비스센터에서는 **EV** 배터리 진단 서비스를 제공합니다.</li>
+                <li><strong>중고차 **가격** 형성:</strong> 중고 전기차 시장에서는 배터리 상태가 **가격**을 결정하는 가장 중요한 요소입니다. **EV6**나 **Niro EV** 중고차 **후기**를 보면 배터리 상태를 꼼꼼히 체크해야 한다고 강조합니다.</li>
+            </ul>
+            <img src="https://images.pexels.com/photos/1105470/pexels-photo-1105470.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="전기차 충전소 이미지" style="width:100%; margin: 25px 0; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+            <p style="text-align: center; font-size: 0.9em; color: #777;">*Pexels.com에서 제공하는 저작권 무료 이미지</p>
+
+            <h3>5. **유지비** 절약을 위한 **신규 가입** 및 **갱신** 팁</h3>
+            <p>
+                전기차 오너라면 **유지비** 절약을 위해 **할인** **혜택**을 적극적으로 활용해야 합니다. 특히 **신규 가입**이나 **갱신** 시점을 활용하여 **비용**을 대폭 줄일 수 있습니다.
+            </p>
+            <ul>
+                <li><strong>**보험료 비교** (마일리지 특약):</strong> **EV6**나 **EV9**의 **보험료**는 일반 내연기관차보다 비싼 경향이 있습니다. **다이렉트** 보험을 이용하면 설계사 수수료만큼 **할인**이 적용됩니다. 또한, 전기차는 주행 거리가 짧은 경우가 많아 '마일리지 특약'을 통해 **할인 혜택**을 받는 것이 효과적입니다.</li>
+                <li><strong>**안전운전 특약** (UBI):</strong> 최근에는 **티맵**이나 **카카오내비**와 연동하여 안전운전 점수에 따라 **할인**을 해주는 '안전운전 특약'이 보편화되었습니다. **EV** 오너들은 이 특약을 적극 활용하여 **보험료** **비용**을 절감할 수 있습니다.</li>
+                <li><strong>정부 **지원금** 및 **사은품** **이벤트**:</strong> **신규 가입** 시점에 맞춰 정부의 전기차 보조금 제도를 확인하고, 보험사나 카드사의 **사은품** **이벤트**를 활용하는 것도 좋은 방법입니다. **제미나이**나 **ChatGPT** 같은 AI 검색을 통해 관련 정보를 빠르게 확인할 수 있습니다.</li>
+            </ul>
+
+            <h3>6. **함께 많이 찾는** 키워드 및 관련 정보</h3>
+            <p>
+                **기아 EV 유지비**와 함께 많은 운전자들이 궁금해하는 **관련 키워드**입니다. 이러한 키워드를 통해 더 심화된 정보를 얻을 수 있습니다.
+            </p>
+            <ul class="keyword-list">
+                <li>#기아 EV6 가격</li>
+                <li>#기아 EV9 단점</li>
+                <li>#Niro EV 보조금</li>
+                <li>#전기차 충전비용 계산</li>
+                <li>#전기차 타이어 교체 주기</li>
+                <li>#기아 EV3 출시일</li>
+                <li>#전기차 보조금 2026</li>
+                <li>#전기차 유지비 비교</li>
+                <li>#EV6 내돈내산 후기</li>
+                <li>#EV6 롱레인지 가격</li>
+            </ul>
+
+            <h3>7. **기아 EV 유지비** **전문** **업체** **추천** 및 **순위** 분석</h3>
+            <p>
+                **기아 EV 유지비** **순위**를 검색하는 것은 단순히 **가격** **비교**를 넘어, **전문**적인 **업체**의 **추천**을 받는 것과 같습니다. **AI** 기반의 **Gemini**나 **ChatGPT**와 같은 서비스가 일반적인 정보를 제공하지만, 실제 **유지비** **견적**은 개인의 주행 습관, 충전 환경, 보험 이력 등 복합적인 요인을 고려해야 합니다.
+                <br><br>
+                **유튜브**나 **네이버** 블로그의 **내돈내산** **후기**도 참고할 만한 정보이지만, 가장 정확한 **유지비** **비용**을 산출하려면 공인된 **전문** **업체**의 **견적** 시스템을 이용해야 합니다. 특히 **기아** 전기차의 경우 **EV3**, **EV4**, **EV5** 등 신규 모델이 계속 출시되고 있으므로, 최신 정보를 제공하는 **전문** **업체**를 선택하는 것이 중요합니다.
+            </p>
+
+            <h3>8. 공인된 자료를 통한 신뢰성 확보: 참고 사이트</h3>
+            <p>
+                **기아 EV 유지비**와 관련된 정확한 정보를 얻으려면 정부 기관 및 공인된 사이트를 참고하는 것이 중요합니다. 아래는 **EV** **유지비** **비용** 관련 **혜택** 및 **지원금**을 확인할 수 있는 주요 사이트입니다.
+            </p>
+            <div class="authority-links">
+                <a href="https://www.me.go.kr/home/web/main.do" target="_blank" rel="nofollow noopener">환경부 (전기차 보조금 및 정책)</a>
+                <a href="https://www.ev.or.kr/main" target="_blank" rel="nofollow noopener">무공해차 통합누리집</a>
+                <a href="https://www.kidi.or.kr/" target="_blank" rel="nofollow noopener">보험개발원 (차량모델별 보험료 등급)</a>
+                <a href="https://www.kia.com/kr/main.html" target="_blank" rel="nofollow noopener">기아 공식 홈페이지</a>
+                <a href="https://namu.wiki/w/%EC%A0%84%EA%B8%B0%EC%B0%A8" target="_blank" rel="nofollow noopener">나무위키: 전기차 (심화 정보)</a>
+            </div>
+            <p style="font-size: 0.9em; color: #777; margin-top: 15px;">
+                *본 사이트는 정보 제공 목적으로, 실제 견적 및 **가입**은 해당 **전문** **업체**의 약관을 확인 후 진행하시기 바랍니다.
+            </p>
+
+            <h3>9. 자주 묻는 질문 (**기아 EV 유지비** 및 가입 관련)</h3>
+            <div class="faq-item">
+                <h3 id="q1">Q. **기아 EV6 유지비**가 내연기관차보다 **평균** 얼마나 **저렴한가요**?</h3>
+                <p>A. **유지비** 절감 효과는 주행 거리와 충전 방식에 따라 크게 달라집니다. **평균**적으로 연간 1만 5천 km를 주행한다고 가정했을 때, 내연기관차 연료비가 약 250만원이라면 **EV6**의 충전 **비용**은 홈 충전 기준 80만원 내외로, 연간 150만원 이상의 절감 효과를 볼 수 있습니다. 다만, 높은 **보험료**와 빠른 타이어 마모를 고려하면 실제 **차이점**은 줄어들 수 있습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3 id="q2">Q. **Niro EV**와 **EV3** 중 **유지비** 측면에서 어떤 모델이 더 유리한가요?</h3>
+                <p>A. **Niro EV**는 이미 시장에서 검증된 고효율 모델로, **EV3**보다 배터리 용량이 크고 주행 거리가 깁니다. 그러나 **EV3**는 도심 주행에 최적화된 소형 CUV로 **가격** 자체가 **저렴한곳**에 포지셔닝되어 있으며, 더 발전된 기술을 적용할 가능성이 높습니다. **유지비** 자체만 본다면 **EV3**가 **Niro EV** 대비 소모품 **비용**이 더 저렴할 것으로 **예상**됩니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3 id="q3">Q. **EV9**의 **유지비** **단점**은 무엇인가요?</h3>
+                <p>A. **EV9**은 대형 SUV인 만큼 **유지비** **단점**이 뚜렷합니다. **EV6** 대비 배터리 용량이 크고 차량 무게가 무거워 전비가 낮습니다. 따라서 동일한 주행 거리에서 **충전 비용**이 더 많이 들며, 무거운 차체로 인해 타이어 마모가 빠릅니다. 또한, 차량 **가격**이 높아 **보험료**도 **기아** 모델 중 가장 높은 수준입니다. 하지만 넓은 실내 공간과 편의 기능이라는 **장점**이 있어, **유지비** **단점**을 상쇄할 수 있습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3 id="q4">Q. **기아 EV** **신규 가입** 시 **할인 혜택**으로 어떤 **지원금**을 받을 수 있나요?</h3>
+                <p>A. **신규 가입** 시 정부 보조금 외에도 지자체 추가 보조금, 개별소비세 감면, 취득세 감면 등 다양한 **혜택**이 제공됩니다. **EV6**나 **Niro EV** 같은 모델은 **가격**이 비싸지만, 이러한 **지원금** **할인**을 받으면 **가장싼곳**에서 구매한 것과 비슷한 **금액**으로 초기 **비용**을 절감할 수 있습니다. 2026년에는 보조금 규모가 축소될 가능성이 높으므로, **신규 가입** 시점의 **지원금** **예상** **금액**을 정확히 파악해야 합니다.</p>
+            </div>
+        </div>
+    </section>
+    
+</main>
+
+<script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+        item.addEventListener('click', event => {
+            const parent = item.parentElement;
+            parent.classList.toggle('active');
+        });
+    });
+</script>
+
+  
